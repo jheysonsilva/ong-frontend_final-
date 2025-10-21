@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Projetos sociais da ONG Esperança Viva.">
+  <meta name="description" content="Projetos da ONG Esperança Viva.">
   <title>Projetos - ONG Esperança Viva</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
@@ -17,7 +17,7 @@
     <nav>
       <ul class="menu">
         <li><a href="index.html">Início</a></li>
-        <li><a href="projetos.html">Projetos</a></li>
+        <li><a href="projetos.html" aria-current="page">Projetos</a></li>
         <li><a href="cadastro.html">Cadastro</a></li>
       </ul>
     </nav>
@@ -25,30 +25,24 @@
 
   <main id="main">
     <section>
-      <h2>Projetos Sociais</h2>
-      <div class="cards-projetos">
-        <div class="card">
-          <img src="img/maos-solidarias.jpg" alt="Projeto Mãos Solidárias">
-          <h3>Mãos Solidárias</h3>
-        </div>
-        <div class="card">
-          <img src="img/crianca-feliz.jpg" alt="Projeto Criança Feliz">
-          <h3>Criança Feliz</h3>
-        </div>
-        <div class="card">
-          <img src="img/alimente-futuro.jpg" alt="Projeto Alimente o Futuro">
-          <h3>Alimente o Futuro</h3>
-        </div>
-      </div>
-
-      <button>Quero ser voluntário</button>
+      <h2>Nossos Projetos</h2>
+      <p>Conheça alguns dos projetos realizados pela ONG Esperança Viva e descubra como transformamos vidas através da solidariedade.</p>
     </section>
+
+    <!-- Container corrigido para JS de renderização -->
+    <div class="cards"></div>
+
+    <div class="botao-voluntario">
+      <a href="cadastro.html" class="btn-voluntario">Quero ser voluntário</a>
+    </div>
   </main>
 
   <footer>
     <p>&copy; 2025 ONG Esperança Viva - Todos os direitos reservados.</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="js/acessibilidade.js"></script>
+  <script src="js/renderProjetos.js"></script>
 </body>
 </html>
