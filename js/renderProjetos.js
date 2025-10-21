@@ -1,33 +1,37 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const container = document.querySelector(".cards");
-  if (!container) return;
 
-  const projetos = [
-    {
-      titulo: "Mãos Solidárias",
-      descricao: "Capacitação de mulheres em situação de vulnerabilidade social.",
-      imagem: "img/maos-solidarias.jpg"
-    },
-    {
-      titulo: "Criança Feliz",
-      descricao: "Atividades educativas e recreativas para crianças carentes.",
-      imagem: "img/crianca-feliz.jpg"
-    },
-    {
-      titulo: "Alimente o Futuro",
-      descricao: "Campanha de arrecadação de alimentos para famílias necessitadas.",
-      imagem: "img/ong-fachada.jpg"
+// validacaoForm.js - validação de formulário e armazenamento local
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.querySelector('form');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nome = document.getElementById('nome')?.value.trim();
+    const email = document.getElementById('email')?.value.trim();
+    const cpf = document.getElementById('cpf')?.value.trim();
+    const telefone = document.getElementById('telefone')?.value.trim();
+    const cidade = document.getElementById('cidade')?.value.trim();
+
+    if (!nome || !email || !cpf || !telefone || !cidade) {
+      alert('⚠️ Preencha todos os campos obrigatórios!');
+      return;
     }
-  ];
 
-  projetos.forEach(projeto => {
-    const card = document.createElement("div");
-    card.classList.add("card");
-    card.innerHTML = `
-      <img src="${projeto.imagem}" alt="Projeto: ${projeto.titulo}">
-      <h3>${projeto.titulo}</h3>
-      <p>${projeto.descricao}</p>
-    `;
-    container.appendChild(card);
+    if (!/^[0-9]{11}$/.test(cpf)) {
+      alert('❌ CPF inválido! Digite apenas 11 números.');
+      return;
+    }
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      alert('❌ E-mail inválido! Verifique o formato.');
+      return;
+    }
+
+    const usuario = { nome, email, cpf, telefone, cidade, criadoEm: new Date().toISOString() };
+    localStorage.setItem('usuarioCadastro', JSON.stringify(usuario));
+
+    alert('✅ Cadastro realizado com sucesso!');
+    form.reset();
   });
 });
